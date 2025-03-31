@@ -1,5 +1,306 @@
-template-repository (1.0-1) unstable; urgency=medium
+pyusb (1.2.1-2) unstable; urgency=medium
 
-  * Initial release
+  * d/control: Added Testsuite: autopkgtest-pkg-pybuild
+  * d/control: Explicitly Build-Depends on pytest.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Raúl Sánchez Siles <rasasi78@gmail.com>  Wed, 08 Mar 2023 22:46:02 +0100
+
+pyusb (1.2.1-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Debian Janitor ]
+  * Bump debhelper from old 11 to 12.
+  * Set upstream metadata fields: Archive.
+  * Remove obsolete field Name from debian/upstream/metadata (already present in
+    machine-readable debian/copyright).
+  * Update standards version to 4.2.1, no changes needed.
+  * Bump debhelper from old 12 to 13.
+
+  [ Raúl Sánchez Siles ]
+  * Upstream update:
+    - Development moved to github.
+    - Added python3-setuptools-scm to b-d.
+  * Update watch file.
+  * Hint version to setuptools_scm from changelog
+  * Remove generated file in dh_auto_clean
+  * Add myself to uploaders.
+  * Sync d/copyright with upstream.
+  * Remove obsolete X-Python-Version
+  * Update d/upstream/metadata
+  * Run upstream testing:
+    - Added libusb-1.0-0 to b-d
+  * d/control:
+    - Added Rules-Requires-Root field
+    - Bump Standards-Version to 4.6.0. No changes required.
+
+ -- Raúl Sánchez Siles <rasasi78@gmail.com>  Sun, 03 Oct 2021 20:02:55 +0200
+
+pyusb (1.0.2-2) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/watch: Use https protocol
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Sandro Tosi ]
+  * Drop python2 support; Closes: #938294
+
+ -- Sandro Tosi <morph@debian.org>  Sun, 22 Mar 2020 21:53:52 -0400
+
+pyusb (1.0.2-1) unstable; urgency=medium
+
+  [ Ruben Undheim ]
+  * New upstream release
+  * debian/changelog: Updated year for copyright holder
+  * debian/compat: level 11
+  * debian/control:
+    - Added python-setuptools and python2-setuptools as
+      build-dependencies
+    - debhelper >= 11
+    - New standards version 4.2.0 - no changes
+  * debian/gbp.conf added
+  * debian/rules:
+    - Clean up remaining directory pyusb.egg-info
+  * debian/upstream/metadata added
+
+  [ Ondřej Nový ]
+  * Convert git repository from git-dpm to gbp layout
+  * debian/changelog: Remove trailing whitespaces
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Fri, 10 Aug 2018 14:47:51 +0200
+
+pyusb (1.0.0-2) unstable; urgency=medium
+
+  [ Ruben Undheim ]
+  * d/control, d/copyright:
+    - Update homepage URL to https://pyusb.github.io/pyusb/ (Closes: #884768)
+  * d/rules:
+    - Define PYBUILD_NAME
+  * Deleted d/python-usb.install and d/python3-usb.install since
+    pybuild figures out this by itself when PYBUILD_NAME is defined.
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/copyright: Use https protocol in Format field
+  * d/changelog: Remove trailing whitespaces
+  * d/control: Remove ancient X-Python3-Version field
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Wed, 11 Jul 2018 23:48:53 +0200
+
+pyusb (1.0.0-1) unstable; urgency=medium
+
+  * New upstream release
+    - Dropped all patches applied upstream
+  * d/control:
+    - Fixed long description. (Mismatch between dependencies and description)
+      (Closes: #821438)
+    - New Standards Version: 3.9.8 - no changes
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 08 May 2016 07:29:03 +0200
+
+pyusb (1.0.0~rc1-1) unstable; urgency=medium
+
+  * Uploaded to unstable (Closes: #819323)
+  * Cherry-picked three bug fixes from upstream:
+    - debian/patches/0001-Fix-braino-in-libusb0.patch
+    - debian/patches/0002-Fixed-typo-in-README.patch
+    - debian/patches/0003-Issue-133-Fixing-detach_kernel_driver.patch
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sat, 16 Apr 2016 11:30:23 +0200
+
+pyusb (1.0.0~rc1-1~exp1) experimental; urgency=medium
+
+  * New upstream release
+  * debian/copyright:
+    - Rewritten and now it is machine-readable
+  * debian/control:
+    - Homepage updated to point to new homepage location
+    - New standards 3.9.7 - no changes
+    - Vcs changed from SVN to GIT
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 06 Mar 2016 11:09:16 +0100
+
+pyusb (1.0.0~b2-2) unstable; urgency=low
+
+  * Uploaded to unstable (Closes: #787792)
+  * debian/control:
+    - Changed architecture to all
+    - Changed dependency to python-all and python3-all to avoid lintian
+    - Removed Bernd Zeimetz from the list of uploaders (Thanks for the work!)
+  * debian/rules:
+    - Use pybuild and simplified rules
+  * Removed debian/pyversions (not needed anymore)
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Thu, 18 Jun 2015 20:25:28 +0200
+
+pyusb (1.0.0~b2-1) experimental; urgency=low
+
+  [ Ruben Undheim ]
+  * New upstream release (Closes: #712206)
+    - Fixes missing module usb.core (Closes: #708764)
+  * Builds python3-usb in addition to python-usb (Closes: #749908)
+  * Bump standards version to 3.9.6 without further change
+  * Debhelper now at version 9
+  * Using source format "3.0 (quilt)"
+  * Changed some dependencies
+  * Changed description of package in d/control
+  * "cme fix dpkg-control" to clean up d/control
+
+  [ Chris J Arges ]
+  * The packaging work up to v1.0.0b1-1
+   - Removed debian/python-usb.examples.
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Mon, 15 Dec 2014 13:19:02 +0100
+
+pyusb (0.4.3-1) unstable; urgency=low
+
+  * Team upload
+  * New upstream release (Closes: #655473)
+    - Modified processing of errors reported by libusb (Closes: 476796)
+    - Update debian copyright with current license and copyright years
+  * Update debian/watch for new upstream location on sourceforge
+  * Update Homepage field in debian/control with new upstream location
+  * Bump standards version to 3.9.2 without further change
+  * Drop obselete Conflicts/Replaces on python-pyusb (<= 0.4.1-1)
+  * Switch to dh_python2
+    - Drop python-support build-depends
+    - Adjust minimum python version
+    - Adjust debian/rules to build with --python2
+
+ -- Scott Kitterman <scott@kitterman.com>  Mon, 16 Jan 2012 22:25:40 -0500
+
+pyusb (0.4.2-2) unstable; urgency=low
+
+  * Upload to unstable
+
+ -- Bernd Zeimetz <bzed@debian.org>  Tue, 21 Jul 2009 14:00:03 +0200
+
+pyusb (0.4.2-1) experimental; urgency=low
+
+  * New upstream version, uploading to experimental
+    as long as debhelper 7.3.5 is not in unstable.
+  * Really remove Petter Reinholdtsen from Uploaders,
+    the change went forgotten with the last upload.
+  * Get rid of cdbs, use dh 7 instead.
+  * Dropping PEP353 compat patch, upstream took care of it.
+  * Bumping Standards-Version to 3.8.2, no changes needed.
+  * Adding debian/pyversions file.
+
+ -- Bernd Zeimetz <bzed@debian.org>  Tue, 21 Jul 2009 12:18:18 +0200
+
+pyusb (0.4.1-5) unstable; urgency=medium
+
+  [ Piotr Ożarowski ]
+  * Remove myself from uploaders.
+
+  [ Sandro Tosi ]
+  * debian/control
+    - switch Vcs-Browser field to viewsvn
+
+  [ Bernd Zeimetz ]
+  * debian/control:
+    - adding dpatch to Build-Depends
+    - Removing Petter Reinholdtsen from Uploaders
+  * debian/rules:
+    - adding dpatch include for cdbs.
+  * debian/patches:
+    - adding patch from Thomas Viehmann - thanks for that:
+      * Don't pass int* where we need Py_ssize_t*.
+        Breaks (overwriting parameters) for python 2.5 on 64 bit arch.
+        Needs the usual PEP353 compatibility bruhaha plus printf.
+      (Closes: #515207)
+
+ -- Bernd Zeimetz <bzed@debian.org>  Sun, 15 Feb 2009 22:06:00 +0100
+
+pyusb (0.4.1-4) unstable; urgency=low
+
+  [ Piotr Ożarowski ]
+  * Rename XS-Vcs-* fields to Vcs-* (dpkg supports them now)
+
+  [ Sandro Tosi ]
+  * debian/control
+    - uniforming Vcs-Browser field
+
+  [ Bernd Zeimetz ]
+  * Bumping Debian revision to -4 as -3 was uploaded to backports.org
+    accidentally.
+  * debian/control:
+    - Updating my email address
+    - Removing transitional python-pyusb package. We don't need to ship it
+      with Lenny as pyusb was never part of a stable release.
+    - Fixing a typo in the short description.
+    - Bumping Standards-Version to 3.8.0 - no changes needed.
+
+ -- Bernd Zeimetz <bzed@debian.org>  Fri, 13 Jun 2008 01:15:35 +0200
+
+pyusb (0.4.1-2) unstable; urgency=low
+
+  * Rename binary package to python-usb
+    (to conform to the Debian Python Policy)
+  * Add python-pyusb transitional dummy package
+  * Add myself to Uploaders
+
+ -- Piotr Ożarowski <piotr@debian.org>  Sun, 30 Sep 2007 19:06:17 +0200
+
+pyusb (0.4.1-1) unstable; urgency=low
+
+  * New upstream version
+  * debian/control:
+    - Adding Homepage field, removing pseudo-field from description
+  * debian/copyright:
+    - Updating file to reflect upstream's change to a BSD-like license
+
+ -- Bernd Zeimetz <bernd@bzed.de>  Sun, 30 Sep 2007 15:19:59 +0200
+
+pyusb (0.4.0-1) unstable; urgency=low
+
+  * New upstream release
+  * adding debian/watch file
+
+ -- Bernd Zeimetz <bernd@bzed.de>  Mon, 25 Jun 2007 18:56:32 +0200
+
+pyusb (0.3.5-4) unstable; urgency=medium
+
+  [ Bernd Zeimetz ]
+  * medium urgency as the package in testing is neither istallable
+    nor removable
+  * debian/control:
+    - replacing the XS-Vcs-* by the urls of the team's svn
+    - removing no longer needed XB-Python-Version field
+    - adding ${shlibs:Depends} to Depends
+    - adding myself to Uploaders
+  * debian/rules:
+    - fixing bogus dpatch include
+    - don't remove /usr/share/python-support/* directories as we
+      drop some info there (Closes: #422556, #421609)
+  * debian/py*:
+    - remove files, not needed as we're using the defaults here
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon, 07 May 2007 08:34:24 +0200
+
+pyusb (0.3.5-3) unstable; urgency=low
+
+  * Move the package to the Debian Python Modules Team maintainence.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Tue, 10 Apr 2007 07:58:58 +0200
+
+pyusb (0.3.5-2) unstable; urgency=low
+
+  * Remove unused variables UPSTREAM_VERSION and PYVER from debian/rules.
+  * Tighten build dependency to cdbs (>=0.4.41) and replace python-dev with python-all-dev.
+    Thanks to Piotr Ozarowski for the tip.
+  * Remove empty directory debian/python-pyusb/usr/share/python-support/python-pyusb from
+    the package.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon,  9 Apr 2007 19:43:44 +0200
+
+pyusb (0.3.5-1) unstable; urgency=low
+
+  * Initial upload. (Closes: #418359)
+  * Added patch 10_api_kernel_detach to make it usable by pymissile.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon,  9 Apr 2007 14:21:02 +0200
